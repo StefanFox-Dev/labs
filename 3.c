@@ -7,23 +7,20 @@ int main() {
     int max = 1000;
     double eps = 1e-12;
 
-    printf("Enter a positive number a, x: ");
+    printf("Введіть додатне число a, x: ");
     scanf("%lf %lf", &a, &x);
 
-    if (x <= -1.0) {
-        printf("Error: x must be greater than -1.\n");
-        return 1;
+    if ((int)x <= -1) {
+        printf("x має бути більше ніж -1.\n");
+    } else {
+        for (int n = 0; n < max; n++) {
+            sum += power / df;
+            if (fabs(power / df) < eps) break;
+            power *= x;
+            df *= (a + n);
+        }
     }
     
-    
-
-    for (int n = 0; n < max; n++) {
-        sum += power / df;
-        if (fabs(power / df) < eps) break;
-        power *= x;
-        df *= (a + n);
-    }
-
-    printf("Result: %.12f\n", sum);
+    printf("Результат: %.12f\n", sum);
     return 0;
 }
