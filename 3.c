@@ -2,25 +2,21 @@
 #include <math.h>
 
 int main() {
-    
-    double a, x, sum=0.0, df=1.0, power=1.0;
-    int max = 1000;
-    double eps = 1e-12;
 
-    printf("Введіть додатне число a, x: ");
-    scanf("%lf %lf", &a, &x);
+    double x, a, e, sum=0.0, term=1.0;
+    int k, n;
 
-    if ((int)x <= -1) {
-        printf("x має бути більше ніж -1.\n");
-    } else {
-        for (int n = 0; n < max; n++) {
-            sum += power / df;
-            if (fabs(power / df) < eps) break;
-            power *= x;
-            df *= (a + n);
-        }
+    printf("Введіть дійсні величини x, a, e: ");
+    scanf("%lf%lf%lf", &x, &a, &e);
+
+    while (fabs(term) >= e) {
+        sum += term;
+        n++;
+        k++;
+        term = term / ((a + x) * k);
     }
-    
-    printf("Результат: %.12f\n", sum);
+
+    printf("Сума = %lf\n", sum);
+    printf("Кількість врахованих доданків = %d\n", n);
     return 0;
 }
