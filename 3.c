@@ -15,14 +15,15 @@ int main() {
         printf("Більше 1 не можна.\n");
     } else {
 
-    while (fabs(term) >= e) {
-        sum += term;
-        n++; k++;
-        term = term * (a + x) / k;
-    }
+        while (fabs(term) >= e) {
+            sum += term;
+            n++; k++;
+            term = term * (a + x) / k;
+        }
 
-    printf("Сума = %.2lf\n", sum);
-    printf("Кількість врахованих доданків = %d\n", n);
+        printf("Сума = %.2lf\n", sum);
+        printf("Кількість врахованих доданків = %d\n", n);
+        printf("Перевірка e^(a+x): %.12f\n", exp(a + x));
     }
     return 0;
 }
