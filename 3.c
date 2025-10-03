@@ -3,20 +3,26 @@
 
 int main() {
 
-    double x, a, e, sum=0.0, term=1.0;
-    int k, n;
+    double x, a, e=1e-12, sum=0.0, term=1.0;
+    int k=0, n=0;
 
-    printf("Введіть дійсні величини x, a, e: ");
-    scanf("%lf%lf%lf", &x, &a, &e);
+    printf("Введіть дійсні величини x, a: ");
+    scanf("%lf%lf", &x, &a);
+    
+    if (e <= 0.0 || (int)x <= 0 || (int)a <= 0 ) {
+        printf("Менше 0 не можна.\n");
+    } else if ((int)e >= 1) {
+        printf("Більше 1 не можна.\n");
+    } else {
 
     while (fabs(term) >= e) {
         sum += term;
-        n++;
-        k++;
-        term = term / ((a + x) * k);
+        n++; k++;
+        term = term * (a + x) / k;
     }
 
-    printf("Сума = %lf\n", sum);
+    printf("Сума = %.2lf\n", sum);
     printf("Кількість врахованих доданків = %d\n", n);
+    }
     return 0;
 }
