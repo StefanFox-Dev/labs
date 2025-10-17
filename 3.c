@@ -18,7 +18,7 @@ int main() {
         while (fabs(f) >= e) {
             sum += f;
             n++; k++;
-            term = f * (a + x) / k;
+            f = f * (a + x) / k;
         }
 
         printf("Сума = %.2lf\n", sum);
