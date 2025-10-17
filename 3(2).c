@@ -7,7 +7,7 @@ int main() {
     int k=0, n=0;
 
     printf("Введіть дійсні величини x, a, e: ");
-    scanf("%lf%lf", &x, &a, &e);
+    scanf("%lf%lf%lf", &x, &a, &e);
     
     if (e <= 0.0 || (int)x <= 0 || (int)a <= 0 ) {
         printf("Менше 0 не можна.\n");
