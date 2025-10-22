@@ -2,28 +2,51 @@
 #include <math.h>
 
 int main() {
-
-    double x, a, e, sum=0.0, f=1.0;
-    int k=0, n=0;
+    double x, a, e, sum = 0.0, term, tk2, tk1, cd;
+    int n = 0, k;
 
     printf("Введіть дійсні величини x, a, e: ");
     scanf("%lf%lf%lf", &x, &a, &e);
-    
-    if (e <= 0.0 || (int)x <= 0 || (int)a <= 0 ) {
-        printf("Менше 0 не можна.\n");
-    } else if ((int)e >= 1) {
-        printf("Більше 1 не можна.\n");
+
+    if ((int)e <= 0) {
+        printf("точність 'e' має бути > 0\n");
+    } else if ((int)(a + x) == 0) {
+        printf("ділення на нуль (a + x = 0).\n");
     } else {
 
-        while (fabs(f) >= e) {
-            sum += f;
-            n++; k++;
-            f = f * (a + x) / k;
+        term = 1.0;
+        sum += term;
+        n++;
+        tk2 = term;
+
+        k = 1;
+        term = 1.0 / (a + x);
+
+        if (fabs(term) < e) {
+            printf("Сума = %.12f\n", sum);
+            printf("Кількість врахованих доданків = %d\n", n);
+            return 0;
         }
 
-        printf("Сума = %.2lf\n", sum);
+        sum += term;
+        n++;
+        tk1 = term;
+        cd = (a + x) * (a + x);
+        
+        for (k = 2;; k++) {
+            term = tk2 / (cd * k);
+            if (fabs(term) < e) {
+                break;
+            }
+            
+            sum += term;
+            n++;
+            tk2 = tk1;
+            tk1 = term;
+        }
+
+        printf("Сума = %.12f\n", sum);
         printf("Кількість врахованих доданків = %d\n", n);
-        printf("Перевірка e^(a+x): %.12f\n", exp(a + x));
     }
     return 0;
 }
