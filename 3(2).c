@@ -2,8 +2,7 @@
 #include <math.h>
 
 int main() {
-    double x, a, e, sum = 0.0, term;
-    double tk_2, tk_1, cd;
+    double x, a, e, sum = 0.0, term, tk2, tk1, cd;
     int n = 0, k;
 
     printf("Введіть дійсні величини x, a, e: ");
@@ -18,7 +17,7 @@ int main() {
         term = 1.0;
         sum += term;
         n++;
-        tk_2 = term;
+        tk2 = term;
         k = 1;
         term = 1.0 / (a + x);
 
@@ -30,18 +29,18 @@ int main() {
 
         sum += term;
         n++;
-        tk_1 = term;
+        tk1 = term;
         cd = (a + x) * (a + x);
         k = 2;
 
         do {
-            term = tk_2 / (cd * k);
+            term = tk2 / (cd * k);
 
             if (fabs(term) >= e) {
                 sum += term;
                 n++;
-                tk_2 = tk_1;
-                tk_1 = term;
+                tk2 = tk1;
+                tk1 = term;
             }
 
             k++;
